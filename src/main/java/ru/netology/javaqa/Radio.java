@@ -2,48 +2,72 @@ package ru.netology.javaqa;
 
 public class Radio {
     private int currentStation;
-    private int currentVolume;
+    private int maxStation;
+    private int volume;
 
-    public void next() {
-        if (currentStation == 9) {
+    public Radio() {
+        this.maxStation = 10;
+    }
+
+    public Radio(int maxStation) {
+        this.maxStation = maxStation;
+    }
+
+    public int getCurrentStation() {
+        return currentStation;
+    }
+
+    public void setCurrentStation(int currentStation) {
+        if (currentStation >= 0 && currentStation < maxStation) {
+            this.currentStation = currentStation;
+        }
+    }
+
+    public int getMaxStation() {
+        return maxStation;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        if (volume >= 0 && volume <= 100) {
+            this.volume = volume;
+        }
+    }
+
+    public void nextStation() {
+        if (currentStation == maxStation - 1) {
             currentStation = 0;
         } else {
             currentStation++;
         }
     }
 
-    public void prev() {
+    public void prevStation() {
         if (currentStation == 0) {
-            currentStation = 9;
+            currentStation = maxStation - 1;
         } else {
             currentStation--;
         }
     }
 
-    public void setStation(int station) {
-        if (station >= 0 && station <= 9) {
-            currentStation = station;
-        }
-    }
-
     public void increaseVolume() {
-        if (currentVolume < 100) {
-            currentVolume++;
+        if (volume < 100) {
+            volume++;
         }
     }
 
     public void decreaseVolume() {
-        if (currentVolume > 0) {
-            currentVolume--;
+        if (volume > 0) {
+            volume--;
         }
     }
 
-
-    public int getCurrentStation() {
-        return currentStation;
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
+    public void setMaxStations(int maxStations) {
+        this.maxStation = maxStations;
     }
 }
+
+
