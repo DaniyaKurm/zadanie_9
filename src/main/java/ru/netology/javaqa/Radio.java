@@ -2,72 +2,48 @@ package ru.netology.javaqa;
 
 public class Radio {
     private int currentStation;
-    private int maxStation;
-    private int volume;
+    private int currentVolume;
 
-    public Radio() {
-        this.maxStation = 10;
-    }
-
-    public Radio(int maxStation) {
-        this.maxStation = maxStation;
-    }
-
-    public int getCurrentStation() {
-        return currentStation;
-    }
-
-    public void setCurrentStation(int currentStation) {
-        if (currentStation >= 0 && currentStation < maxStation) {
-            this.currentStation = currentStation;
-        }
-    }
-
-    public int getMaxStation() {
-        return maxStation;
-    }
-
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int volume) {
-        if (volume >= 0 && volume <= 100) {
-            this.volume = volume;
-        }
-    }
-
-    public void nextStation() {
-        if (currentStation == maxStation - 1) {
+    public void next() {
+        if (currentStation == 9) {
             currentStation = 0;
         } else {
             currentStation++;
         }
     }
 
-    public void prevStation() {
+    public void prev() {
         if (currentStation == 0) {
-            currentStation = maxStation - 1;
+            currentStation = 9;
         } else {
             currentStation--;
         }
     }
 
+    public void setStation(int station) {
+        if (station >= 0 && station <= 9) {
+            currentStation = station;
+        }
+    }
+
     public void increaseVolume() {
-        if (volume < 100) {
-            volume++;
+        if (currentVolume < 100) {
+            currentVolume++;
         }
     }
 
     public void decreaseVolume() {
-        if (volume > 0) {
-            volume--;
+        if (currentVolume > 0) {
+            currentVolume--;
         }
     }
 
-    public void setMaxStations(int maxStations) {
-        this.maxStation = maxStations;
+
+    public int getCurrentStation() {
+        return currentStation;
+    }
+
+    public int getCurrentVolume() {
+        return currentVolume;
     }
 }
-
-
